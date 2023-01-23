@@ -1,0 +1,39 @@
+ContextMap OffersContexMap {
+	contains ToosContext
+	contains ScoringContext
+	contains OtherEventPublisherContext
+    contains MeeteorContext
+    contains RTBContext
+    contains ClientProcessContext
+    contains ApplicationContext
+    contains ProductProcessContext
+    contains CapContext
+    contains SalesMasterContext
+    contains HitmanContext
+
+	OtherEventPublisherContext [D]<-[U,OHS,PL] ToosContext
+    ToosContext [D,ACL]<-[U,OHS] ScoringContext
+    SalesMasterContext [D,CF]<-[U,OHS] ToosContext
+    SalesMasterContext [U,OHS]->[D,CF] RTBContext
+    SalesMasterContext [D,ACL]<-[U] MeeteorContext
+    ClientProcessContext [D,ACL]<-[U,OHS] ScoringContext
+    ClientProcessContext [P]<->[P] SalesMasterContext
+    ClientProcessContext [P]<->[P] ApplicationContext
+    ProductProcessContext [D,CF]<-[U,OHS] ApplicationContext
+    SalesMasterContext [D,CF]<-[U,OHS] ApplicationContext
+    SalesMasterContext [P]<->[P] HitmanContext
+    SalesMasterContext [P]<->[P] CapContext
+}
+
+BoundedContext ToosContext
+BoundedContext SalesPlatformContext
+BoundedContext ScoringContext
+BoundedContext OtherEventPublisherContext
+BoundedContext MeeteorContext
+BoundedContext RTBContext
+BoundedContext ClientProcessContext
+BoundedContext ApplicationContext
+BoundedContext ProductProcessContext
+BoundedContext HitmanContext
+BoundedContext CapContext
+BoundedContext SalesMasterContext
